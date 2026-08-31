@@ -1,0 +1,71 @@
+.boardWrapper {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto var(--spacing-lg) auto;
+  display: flex;
+  justify-content: center;
+}
+
+.boardGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  background: var(--color-board-bg);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-board-border);
+  box-shadow:
+    0 10px 25px -5px rgba(99, 102, 241, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  /* Smooth theme transitions */
+  transition:
+    background var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-slow);
+  /* Board entrance */
+  animation: boardSlideIn 0.5s var(--ease-spring) both;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep on new game — triggered by board reset via CSS */
+.boardGrid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: boardShimmer 1.2s var(--ease-out-quart) 0.3s both;
+  pointer-events: none;
+}
+
+@keyframes boardShimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(200%); }
+}
+
+@keyframes boardSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (min-width: 480px) {
+  .boardGrid {
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-xl);
+  }
+}

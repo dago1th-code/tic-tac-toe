@@ -1,0 +1,129 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-xs);
+  width: 100%;
+  animation: headerDrop 0.6s var(--ease-spring) both;
+}
+
+@keyframes headerDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 2px;
+}
+
+.brandBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--gradient-badge);
+  color: var(--color-primary-300);
+  padding: 5px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: box-shadow var(--transition-normal), transform var(--transition-bounce);
+}
+
+.brandBadge:hover {
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
+  transform: scale(1.04);
+}
+
+.brandDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+  display: inline-block;
+  box-shadow: 0 0 8px #818cf8;
+  animation: orbFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0 6px #818cf8;
+  }
+  50% {
+    transform: scale(1.4) translateY(-1px);
+    box-shadow: 0 0 14px #c084fc;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0 6px #818cf8;
+  }
+}
+
+.brandName {
+  letter-spacing: 0.12em;
+  background: linear-gradient(135deg, #93c5fd 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  position: relative;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Animated shimmer across the gradient */
+  animation: titleShimmer 4s linear infinite;
+}
+
+@keyframes titleShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  animation: subtitleFade 0.8s var(--ease-out-quart) 0.3s both;
+}
+
+@keyframes subtitleFade {
+  from { opacity: 0; letter-spacing: 0.06em; }
+  to   { opacity: 1; letter-spacing: normal; }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.75rem;
+  }
+  .subtitle {
+    font-size: 0.9375rem;
+  }
+}

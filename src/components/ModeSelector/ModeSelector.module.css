@@ -1,0 +1,142 @@
+.container {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.modeTabs {
+  display: flex;
+  background-color: var(--color-surface-subtle);
+  padding: 4px;
+  border-radius: var(--radius-lg);
+  gap: 4px;
+  flex: 1;
+  border: 1px solid var(--color-border);
+}
+
+.tabBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabBtn:hover {
+  color: var(--color-text-main);
+}
+
+.tabActive {
+  background: var(--color-surface);
+  color: var(--color-primary-400);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+  font-weight: 700;
+}
+
+.tabIcon {
+  font-size: 1rem;
+}
+
+.soundBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.soundOn {
+  color: var(--color-primary-400);
+  background-color: var(--color-surface-subtle);
+  border-color: var(--color-primary-400);
+}
+
+.soundOff {
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-subtle);
+}
+
+.soundBtn:hover {
+  transform: scale(1.05);
+}
+
+.difficultyRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(168, 85, 247, 0.12) 100%);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.diffLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+}
+
+.diffBtn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.diffBtn:hover {
+  color: var(--color-text-main);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.diffActive {
+  background-color: var(--color-surface);
+  color: var(--color-purple-400);
+  border-color: var(--color-purple-400);
+  box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
+  font-weight: 700;
+}

@@ -1,0 +1,259 @@
+.container {
+  width: 100%;
+  max-width: 380px;
+  margin-top: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-subtle);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.headerBar {
+  width: 100%;
+}
+
+.toggleBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: transparent;
+  color: var(--color-text-main);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background-color var(--transition-fast);
+}
+
+.toggleBtn:hover {
+  background-color: rgba(99, 102, 241, 0.08);
+}
+
+.toggleTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countBadge {
+  font-size: 0.75rem;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-500);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.chevron {
+  transition: transform var(--transition-normal);
+  color: var(--color-text-muted);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.drawer {
+  padding: 12px 14px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background-color: var(--color-surface);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.statNum {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-top: 1px;
+}
+
+.numX {
+  color: var(--color-player-x);
+}
+
+.numO {
+  color: var(--color-player-o);
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.historyList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.historyList::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+}
+
+.historyCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.historyCard:hover {
+  transform: translateX(2px);
+  border-color: var(--color-primary-400);
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.roundNum {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.winnerBadge {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.winX {
+  color: var(--color-player-x);
+}
+
+.winO {
+  color: var(--color-player-o);
+}
+
+.winDraw {
+  color: var(--color-text-muted);
+}
+
+.cardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.tagsRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.modeTag,
+.movesTag {
+  font-size: 0.6875rem;
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.timeTag {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.clearBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ef4444;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clearBtn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.emptyIcon {
+  font-size: 1.75rem;
+  margin-bottom: 2px;
+}
+
+.emptyTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.emptySub {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+

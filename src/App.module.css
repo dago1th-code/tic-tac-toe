@@ -1,0 +1,80 @@
+.appContainer {
+  width: 100%;
+  max-width: 490px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  animation: appFadeSlide 0.55s var(--ease-spring) both;
+}
+
+@keyframes appFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainCard {
+  width: 100%;
+  background: var(--color-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--color-card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Smooth theme crossfade */
+  transition:
+    background-color var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+  /* Subtle floating effect */
+  animation: cardFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes cardFloat {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-4px); }
+}
+
+@media (min-width: 480px) {
+  .mainCard {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+}
+
+.actionControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 380px;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  animation: footerFade 1.2s var(--ease-out-quart) 0.4s both;
+}
+
+@keyframes footerFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 0.9; transform: translateY(0); }
+}
+
+.footer p {
+  opacity: 0.9;
+}

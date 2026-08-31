@@ -1,0 +1,161 @@
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-cell-bg);
+  border: 2px solid var(--color-cell-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  /* Smooth theme + state transitions */
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-bounce-tight),
+    box-shadow var(--transition-normal);
+  /* Staggered entrance so the board "arrives" cell-by-cell */
+  animation: cellReveal 0.4s var(--ease-spring) both;
+}
+
+/* Stagger each of 9 cells */
+.cell:nth-child(1) { animation-delay: 0.04s; }
+.cell:nth-child(2) { animation-delay: 0.08s; }
+.cell:nth-child(3) { animation-delay: 0.12s; }
+.cell:nth-child(4) { animation-delay: 0.16s; }
+.cell:nth-child(5) { animation-delay: 0.20s; }
+.cell:nth-child(6) { animation-delay: 0.24s; }
+.cell:nth-child(7) { animation-delay: 0.28s; }
+.cell:nth-child(8) { animation-delay: 0.32s; }
+.cell:nth-child(9) { animation-delay: 0.36s; }
+
+@keyframes cellReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Hover lift with ripple background */
+.cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity var(--transition-fast), transform var(--transition-normal);
+}
+
+.cell:hover:not(:disabled)::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cell:hover:not(:disabled) {
+  background-color: var(--color-cell-hover);
+  border-color: var(--color-primary-400);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.28), 0 0 0 1px rgba(99, 102, 241, 0.1);
+}
+
+.cell:active:not(:disabled) {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 0.08s;
+}
+
+.cell:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 2px;
+  z-index: 2;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cellX {
+  color: var(--color-player-x);
+}
+
+.cellO {
+  color: var(--color-player-o);
+}
+
+/* Mark container — spring in on placement */
+.mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+  animation: markPopIn 0.35s var(--ease-spring) both;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes markPopIn {
+  0% {
+    transform: scale(0) rotate(-15deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  55% {
+    transform: scale(1.18) rotate(4deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  80% {
+    transform: scale(0.94) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.cellX .markSvg {
+  filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.55)) drop-shadow(0 2px 4px rgba(37, 99, 235, 0.3));
+}
+
+.cellO .markSvg {
+  filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.55)) drop-shadow(0 2px 4px rgba(147, 51, 234, 0.3));
+}
+
+.markSvg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
+
+/* Winning cell — radiant pulse */
+.winningCell {
+  background: var(--color-win-bg) !important;
+  border-color: var(--color-win-border) !important;
+  box-shadow: var(--shadow-glow-win), var(--shadow-md) !important;
+  animation: winCellPulse 1.2s var(--ease-in-out-quart) infinite alternate;
+  z-index: 1;
+}
+
+.winningCell .markSvg {
+  filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.8)) !important;
+}
+
+@keyframes winCellPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+  }
+  100% {
+    transform: scale(1.06);
+    box-shadow: 0 0 28px rgba(124, 58, 237, 0.8), 0 0 50px rgba(192, 38, 211, 0.3);
+  }
+}
