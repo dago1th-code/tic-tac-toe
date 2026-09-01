@@ -1,4 +1,4 @@
-# David Harris Tic Tac Toe
+# David Harris Tic Tac Toe Game
 
 A lightweight, modern, and accessible **React + TypeScript** web application styled with a **green-first visual identity** branded for **David Harris**.
 
