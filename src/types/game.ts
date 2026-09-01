@@ -47,12 +47,12 @@ export interface GameHistoryItem {
   totalMoves: number;
   winningCells?: number[];
   timestamp: number;
-  duration: number;        // seconds
+  duration?: number;        // seconds
   gameMode: GameMode;
   aiDifficulty?: AIDifficulty;
-  boardSize: BoardSize;
+  boardSize?: BoardSize;
   rewardEarned?: number;
-  moveLog: number[];       // ordered cell indices for replay
+  moveLog?: number[];       // ordered cell indices for replay
 }
 
 // ── Settings (persisted) ──────────────────────────────────────────────────────
@@ -82,24 +82,24 @@ export interface LeaderboardEntry {
 export interface GameState {
   // Board
   board: Board;
-  boardSize: BoardSize;
+  boardSize?: BoardSize;
   currentPlayer: Player;
   humanPlayer: Player;       // which symbol the human plays (AI mode)
   winner: Player | null;
   isDraw: boolean;
   winningCells: number[];
-  moveLog: number[];         // current game move list for replay
-  moveHistory: Board[];      // undo stack (board snapshots)
+  moveLog?: number[];         // current game move list for replay
+  moveHistory?: Board[];      // undo stack (board snapshots)
 
   // Match/Series
   scores: Scores;            // session running totals
-  matchScore: MatchScore;    // current best-of series score
-  matchMode: MatchMode;
-  matchWinner: Player | null;
+  matchScore?: MatchScore;    // current best-of series score
+  matchMode?: MatchMode;
+  matchWinner?: Player | null;
 
   // History
   history: GameHistoryItem[];
-  gameStartTime: number;     // Date.now() at first move
+  gameStartTime?: number;     // Date.now() at first move
 
   // Rewards
   balance: number;
@@ -111,18 +111,18 @@ export interface GameState {
   aiDifficulty: AIDifficulty;
 
   // UI hints / feedback
-  hintCell: number | null;
-  invalidCell: number | null;
+  hintCell?: number | null;
+  invalidCell?: number | null;
 
   // App navigation
-  appScreen: AppScreen;
-  lastFinishedGame: GameHistoryItem | null;
+  appScreen?: AppScreen;
+  lastFinishedGame?: GameHistoryItem | null;
 
   // Settings
   soundEnabled: boolean;
-  timerEnabled: boolean;
-  timerSeconds: number;
-  colorTheme: ColorTheme;
-  playerX: PlayerProfile;
-  playerO: PlayerProfile;
+  timerEnabled?: boolean;
+  timerSeconds?: number;
+  colorTheme?: ColorTheme;
+  playerX?: PlayerProfile;
+  playerO?: PlayerProfile;
 }
